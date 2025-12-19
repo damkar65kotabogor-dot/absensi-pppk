@@ -1,0 +1,222 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom base styles */
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: linear-gradient(135deg, #f0f4ff 0%, #e8f0fe 50%, #f5f7ff 100%);
+    min-height: 100vh;
+    color: #1e293b;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Custom component styles */
+@layer components {
+  /* Glass morphism effect */
+  .glass {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .glass-dark {
+    background: rgba(30, 41, 59, 0.9);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Gradient backgrounds */
+  .bg-gradient-primary {
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  }
+
+  .bg-gradient-success {
+    background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  }
+
+  .bg-gradient-warning {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  }
+
+  .bg-gradient-danger {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  }
+
+  /* Card styles */
+  .card {
+    @apply bg-white rounded-2xl shadow-card transition-all duration-300;
+  }
+
+  .card:hover {
+    @apply shadow-card-hover;
+  }
+
+  /* Button base */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-primary {
+    @apply bg-gradient-primary text-white hover:opacity-90 focus:ring-primary-500;
+  }
+
+  .btn-success {
+    @apply bg-gradient-success text-white hover:opacity-90 focus:ring-success-500;
+  }
+
+  .btn-danger {
+    @apply bg-gradient-danger text-white hover:opacity-90 focus:ring-danger-500;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-100 text-gray-700 hover:bg-gray-200 focus:ring-gray-400;
+  }
+
+  .btn-ghost {
+    @apply bg-transparent text-gray-600 hover:bg-gray-100 focus:ring-gray-400;
+  }
+
+  /* Input styles */
+  .input {
+    @apply w-full px-4 py-3 rounded-xl border border-gray-200 bg-white/80 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 focus:outline-none transition-all duration-200;
+  }
+
+  .input-error {
+    @apply border-danger-500 focus:border-danger-500 focus:ring-danger-500/20;
+  }
+
+  /* Sidebar styles */
+  .sidebar-link {
+    @apply flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 hover:bg-primary-50 hover:text-primary-700 transition-all duration-200;
+  }
+
+  .sidebar-link-active {
+    @apply bg-primary-100 text-primary-700 font-medium;
+  }
+
+  /* Status badges */
+  .badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium;
+  }
+
+  .badge-success {
+    @apply bg-success-100 text-success-600;
+  }
+
+  .badge-warning {
+    @apply bg-warning-100 text-warning-600;
+  }
+
+  .badge-danger {
+    @apply bg-danger-100 text-danger-600;
+  }
+
+  .badge-primary {
+    @apply bg-primary-100 text-primary-600;
+  }
+
+  .badge-gray {
+    @apply bg-gray-100 text-gray-600;
+  }
+
+  /* Table styles */
+  .table-container {
+    @apply w-full overflow-x-auto rounded-xl;
+  }
+
+  .table {
+    @apply w-full text-sm text-left;
+  }
+
+  .table th {
+    @apply px-4 py-3 bg-gray-50 font-semibold text-gray-700 border-b;
+  }
+
+  .table td {
+    @apply px-4 py-3 border-b border-gray-100;
+  }
+
+  .table tr:hover td {
+    @apply bg-gray-50/50;
+  }
+
+  /* Attendance button */
+  .attendance-btn {
+    @apply relative w-48 h-48 rounded-full flex flex-col items-center justify-center text-white font-semibold text-lg shadow-xl transition-all duration-300 hover:scale-105 active:scale-95;
+  }
+
+  .attendance-btn-checkin {
+    @apply bg-gradient-success;
+  }
+
+  .attendance-btn-checkout {
+    @apply bg-gradient-danger;
+  }
+
+  .attendance-btn::before {
+    content: '';
+    @apply absolute inset-0 rounded-full animate-ping opacity-20;
+  }
+
+  .attendance-btn-checkin::before {
+    @apply bg-success-500;
+  }
+
+  .attendance-btn-checkout::before {
+    @apply bg-danger-500;
+  }
+}
+
+/* Custom utilities */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Hide scrollbar but keep functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Shimmer loading effect */
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.5) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+}
